@@ -1,0 +1,13 @@
+(* Test executable basis: the library plus the test harness and runner. *)
+
+$(SML_LIB)/basis/basis.mlb
+
+../lib/github.com/sjqtentacles/sml-prng/prng.mlb
+
+harness.sml
+support.sml
+test_streams.sml
+test_helpers.sml
+test_edge.sml
+entry.sml
+main.sml

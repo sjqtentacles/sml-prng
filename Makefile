@@ -14,7 +14,7 @@ TEST_MLB   := test/test.mlb
 SRCS       := $(wildcard $(LIBDIR)/*.sml $(LIBDIR)/*.sig $(LIBDIR)/*.mlb) \
               $(wildcard test/*.sml) $(TEST_MLB)
 
-.PHONY: all test poly test-poly all-tests clean
+.PHONY: all test poly test-poly all-tests example clean
 
 all: $(BIN)/test-mlton
 
@@ -30,6 +30,12 @@ poly test-poly:
 	printf 'use "$(LIBDIR)/prng.sig";\nuse "$(LIBDIR)/prng.sml";\nuse "test/harness.sml";\nuse "test/support.sml";\nuse "test/test_streams.sml";\nuse "test/test_helpers.sml";\nuse "test/test_edge.sml";\nuse "test/entry.sml";\nuse "test/main.sml";\n' | $(POLY) -q --error-exit
 
 all-tests: test test-poly
+
+example: $(BIN)/demo
+	./$(BIN)/demo
+
+$(BIN)/demo: $(SRCS) examples/demo.sml examples/sources.mlb | $(BIN)
+	$(MLTON) -output $@ examples/sources.mlb
 
 $(BIN):
 	mkdir -p $(BIN)

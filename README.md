@@ -94,7 +94,25 @@ val (b, _) = SplitMix64.words 5 (SplitMix64.seed 0w0)
 make test        # MLton
 make test-poly   # Poly/ML
 make all-tests   # both
+make example     # build + run the demo
 make clean
+```
+
+## Example
+
+[`examples/demo.sml`](examples/demo.sml) seeds each generator with a fixed
+constant and prints the first words in hex, followed by ten unbiased dice rolls
+and a Fisher–Yates shuffle. Because the generators are pure and masked to
+`Word64`, the output is identical on every run and on both compilers (the hex
+words match each generator's published reference vectors). Run it with:
+
+```
+$ make example
+SplitMix64 (seed 0):   E220A8397B1DCDAF 6E789E6AA1B965F4 06C45D188009454F F88BB8A8724C81EC 1B39896A51A8749B
+Xoshiro256** (seed 0): 99EC5F36CB75F2B4 BF6E1F784956452A 1A5F849D4933E6E0 6AA594F1262D2D2C BBA5AD4A1F842E59
+Pcg32 (seed 42):       A15C02B7 7B47F409 BA1D3330 83D2F293 BFA4784B CBED606E
+10 dice rolls (seed 12345): 3 4 4 1 4 5 3 3 2 2
+shuffle 1..10 (seed 777):   8 6 4 2 1 7 3 9 10 5
 ```
 
 ## License

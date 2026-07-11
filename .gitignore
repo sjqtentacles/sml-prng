@@ -1,5 +1,5 @@
-# MLton build artifacts
-/bin/test-mlton
+# All build artifacts (this repo has no tracked sources under bin/).
+/bin/
 
 # editor/OS noise
 .DS_Store

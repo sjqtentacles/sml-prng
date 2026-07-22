@@ -1,5 +1,7 @@
 # sml-prng
 
+[![CI](https://github.com/sjqtentacles/sml-prng/actions/workflows/ci.yml/badge.svg)](https://github.com/sjqtentacles/sml-prng/actions/workflows/ci.yml)
+
 Seedable, deterministic, **byte-identical** pseudo-random number generators in
 pure Standard ML — no FFI, no external dependencies, identical streams under
 both [MLton](http://mlton.org/) and [Poly/ML](https://www.polyml.org/).
